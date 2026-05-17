@@ -1,5 +1,15 @@
 name: CI
-on: [pull_request]
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branche de build'
+        required: true
+        default: 'feat/add-flare-solverr-bypass-cf'
+  pull_request:
+    branches:
+      - feat/add-flare-solverr-bypass-cf
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,6 +23,8 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.inputs.branch || github.ref_name }}
 
       - name: Set up JDK
         uses: actions/setup-java@v5
