@@ -5,6 +5,7 @@ on:
       - '**.md'
       - 'i18n/src/commonMain/resources/**/strings.xml'
       - 'i18n/src/commonMain/resources/**/plurals.xml'
+  workflow_dispatch:  #
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
@@ -12,6 +13,8 @@ concurrency:
 
 permissions:
   contents: read
+
+  
 
 jobs:
   build:
