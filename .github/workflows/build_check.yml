@@ -10,6 +10,9 @@ on:
   pull_request:
     branches:
       - feat/add-flare-solverr-bypass-cf
+  push:
+    branches:
+      - feat/add-flare-solverr-bypass-cf
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
