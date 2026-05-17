@@ -40,7 +40,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
 
       - name: Build app
-        run: ./gradlew spotlessCheck assembleDevDebug
+        run: ./gradlew spotlessCheck assembleDevRelease
 
       - name: List APK output
         run: ls -R app/build/outputs/apk/
@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: TachiyomiSY-${{ github.sha }}-apks
-          path: app/build/outputs/apk/dev/debug/*.apk
+          path: app/build/outputs/apk/release/*.apk
